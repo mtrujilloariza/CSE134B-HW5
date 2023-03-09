@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Marlon's Native Dialogs</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<template id="alertTemplate">
+		<p></p>
+		<button>Confirm</button>
+	</template>
+
+	<template id="confirmTemplate">
+		<p></p>
+		<button id="cancel">Cancel</button>
+		<button id="confirm">Confirm</button>
+	</template>
+
+	<template id="promptTemplate">
+		<p></p>
+		<input type="text">
+		<button id="cancel">Cancel</button>
+		<button id="confirm">Confirm</button>
+	</template>
+</head>
+
+<body>
+	<h2>Native Dialogs</h2>
+	<button id="alert">Alert</button>
+	<button id="confirm">Confirm</button>
+	<button id="prompt">Prompt</button>
+	<button id="saferPrompt">Safer Prompt</button>
+
+	<br>
+	<br>
+
+	<output id="output" style="border: 2px black solid; width: 500px; height: 500px; display: inline-block;"></output>
+
+	<dialog></dialog>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"></script>
+	<script>
+		// wait for DOM to load an then add all the event listeners
+		window.addEventListener('load', init);
+
+		// add all the event listeners
+		function init() {
+			// add alert to the alert button
+			document.getElementById('alert').addEventListener('click', function () {
+				alert('This is an alert!');
+			});
+
+			// add confirm to the confirm button
+			document.getElementById('confirm').addEventListener('click', function () {
+				var result = confirm('do you confirm?');
+				// set the output of the confirm dialog to the output element
+				document.getElementById('output').innerHTML = `The value returned by the confirm method is : ${result}`;
+			});
+
+			// add prompt to the prompt button
+			document.getElementById('prompt').addEventListener('click', function () {
+				var result = prompt('this is a prompt');
+				// set the output of the prompt dialog to the output element
+				if (result == null) {
+					document.getElementById('output').innerHTML = 'User did\'t enter a anything';
+				} else {
+					document.getElementById('output').innerHTML = `${result}`;
+				}
+			});
+
+			// add prompt with the dom purify to the prompt button
+			document.getElementById('saferPrompt').addEventListener('click', function () {
+				var result = prompt('this is a prompt');
+				// set the output of the prompt dialog to the purified output element
+				if (result == null) {
+					document.getElementById('output').innerHTML = 'User did\'t enter a anything';
+				} else {
+					document.getElementById('output').innerHTML = DOMPurify.sanitize(`${result}`);
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

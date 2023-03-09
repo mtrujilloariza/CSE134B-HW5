@@ -1,0 +1,359 @@
+:root {
+   --gradient: radial-gradient(
+      50vh at bottom,
+      rgba(136, 166, 255, 0.2),
+      transparent
+   );
+   --main-color: #101010;
+   --site-grey: #888888;
+   --site-dark-grey: #2f2e2e;
+   --transition-delay: 0.25s ease-in-out;
+}
+
+@font-face {
+   font-family: Inter;
+   src: url(Inter-Regular.woff);
+}
+
+@keyframes rainbow {
+   0% {
+      color: #ff3737;
+   }
+
+   10% {
+      color: #d8cc73;
+   }
+
+   20% {
+      color: #3dfa4c;
+   }
+
+   30% {
+      color: #70f1bb;
+   }
+
+   40% {
+      color: #75e0ea;
+   }
+
+   50% {
+      color: #8e9acb;
+   }
+
+   60% {
+      color: #0d0486;
+   }
+
+   70% {
+      color: #5c2578;
+   }
+   80% {
+      color: #9f6fbb;
+   }
+
+   90% {
+      color: #f31ed3;
+   }
+
+   100% {
+      color: rgb(255, 120, 223);
+   }
+}
+body {
+   background: var(--main-color) var(--gradient);
+   background-attachment: fixed;
+   color: white;
+   font-family: "Inter", sans-serif;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 0 20px;
+}
+
+main {
+   margin: 8vh 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   max-width: 800px;
+   width: 100%;
+}
+
+section {
+   min-width: 100%;
+   width: -moz-fit-content;
+   width: fit-content;
+   text-align: center;
+}
+
+div {
+   width: 100%;
+}
+
+h1 {
+   font-size: 2.5rem;
+   margin: 0;
+}
+
+li {
+   list-style-type: none;
+}
+
+header nav {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+a {
+   text-decoration: none;
+   color: white;
+}
+
+header nav ul {
+   border-radius: 25px;
+   display: inline-flex;
+   background-color: rgba(117, 117, 117, 0.1);
+   align-items: center;
+   padding: 0 10px;
+   margin: 20px 0 0 0;
+   width: 100%;
+   max-width: 600px;
+   align-items: center;
+   justify-content: space-between;
+}
+
+header nav ul li {
+   list-style: none;
+   color: var(--site-grey);
+   position: relative;
+   cursor: pointer;
+   white-space: nowrap;
+   padding: 12px 16px;
+   margin: 0 8px;
+}
+
+header nav ul li a[aria-label="active page"] {
+   color: white;
+}
+
+footer {
+   text-align: center;
+}
+
+video {
+   width: 100%;
+}
+
+canvas {
+   background: white;
+   width: 100%;
+   max-width: 500px;
+}
+
+details {
+   width: 100%;
+   margin: 15px;
+}
+
+details p {
+   transition: var(--transition-delay);
+}
+
+table {
+   width: 100%;
+}
+
+table ul {
+   padding-left: 5px;
+}
+
+iframe {
+   width: 80%;
+   aspect-ratio: 8.5/11;
+   margin-top: 50px;
+}
+
+header nav ul li a::before {
+   content: " ";
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   z-index: -1;
+   transition: var(--transition-delay);
+   border-radius: 25px;
+}
+
+header nav ul li a:hover {
+   color: black;
+}
+
+header nav ul li a[aria-label="active page"]:hover {
+   color: black;
+}
+
+header nav ul li a {
+   color: inherit;
+}
+
+header nav ul li a:hover:before {
+   background: white;
+   transform: scale(0.9);
+}
+
+input[title="hamburger menu"] {
+   display: none;
+}
+
+span.contrib-number {
+   color: white;
+}
+
+a.pagelink {
+   background: var(--site-dark-grey);
+   display: inline-block;
+   margin: 10px;
+   padding: 10px 20px;
+   border-radius: 25px;
+}
+
+a.pagelink:hover {
+   color: var(--site-grey);
+}
+
+form {
+   width: 100%;
+}
+
+td:nth-child(1) {
+   width: 25%;
+   border-right: 1px white solid;
+}
+
+td:nth-child(2) {
+   width: 75%;
+   padding-left: 5px;
+}
+
+@media screen and (max-width: 767px) {
+   footer pre {
+      display: none;
+   }
+
+   h1 {
+      font-size: xx-large;
+      margin-top: 20px;
+   }
+
+   main {
+      gap: 1vh;
+   }
+
+   table {
+      font-size: x-small;
+   }
+
+   iframe {
+      height: -moz-fit-content;
+      height: fit-content;
+   }
+
+   a.pagelink {
+      margin: 5px;
+      padding: 8px 15px;
+   }
+
+   header {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+   }
+
+   header nav {
+      display: block;
+      position: relative;
+   }
+
+   header nav ul {
+      padding: 0;
+      margin: 0;
+      position: fixed;
+      left: -100%;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      flex-direction: column;
+      justify-content: space-evenly;
+      z-index: 50;
+      background: black;
+   }
+
+   header nav ul li a {
+      font-size: large;
+   }
+
+   input[title="hamburger menu"] {
+      display: block;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      width: 40px;
+      height: 32px;
+      cursor: pointer;
+      opacity: 0;
+      margin: 0;
+   }
+
+   #hamburger {
+      display: block;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 40px;
+      height: 32px;
+      z-index: 75;
+   }
+
+   #hamburger span {
+      display: block;
+      width: 34px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+      background: #cdcdcd;
+      border-radius: 3px;
+      z-index: 75;
+      transform-origin: 4px 0px;
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+         background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+   }
+
+   input[title="hamburger menu"]:checked ~ header nav ul {
+      position: fixed;
+      left: 0;
+   }
+
+   input[title="hamburger menu"]:checked ~ #hamburger span:first-child {
+      opacity: 1;
+      transform: rotate(45deg);
+   }
+
+   input[title="hamburger menu"]:checked ~ #hamburger span:nth-child(2) {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+   }
+
+   input[title="hamburger menu"]:checked ~ #hamburger span:nth-child(3) {
+      transform: rotate(-45deg);
+   }
+
+   input[title="hamburger menu"]:checked ~ main {
+      display: none;
+   }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Marlon's Native Dialogs</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<template id="alertTemplate">
+		<p></p>
+		<button>Confirm</button>
+	</template>
+
+	<template id="confirmTemplate">
+		<p></p>
+		<button id="cancel">Cancel</button>
+		<button id="confirm">Confirm</button>
+	</template>
+
+	<template id="promptTemplate">
+		<p></p>
+		<input type="text">
+		<button id="cancel">Cancel</button>
+		<button id="confirm">Confirm</button>
+	</template>
+</head>
+
+<body>
+	<h2>Custom Dialogs</h2>
+	<button id="customAlert">Custom Alert</button>
+	<button id="customConfirm">Custom Confirm</button>
+	<button id="customPrompt">Custom Prompt</button>
+
+	<br>
+	<br>
+
+	<output id="output" style="border: 2px black solid; width: 500px; height: 500px; display: inline-block;"></output>
+
+	<dialog></dialog>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"></script>
+	<script type="module">
+		import { customAlertFunc, customConfirmFunc, customPromptFunc } from '/customdialog.js';
+
+		// wait for DOM to load an then add all the event listeners
+		window.addEventListener('load', init);
+
+		// add all the event listeners
+		function init() {
+			// add the event listeners to the custom alert button
+			document.getElementById('customAlert').addEventListener('click', function () {
+				customAlertFunc('This is a custom alert');
+			});
+
+			// add the event listeners to the custom confirm button
+			document.getElementById('customConfirm').addEventListener('click', function () {
+				var result = customConfirmFunc('This is a custom confirm');
+				// wait for the promise to resolve and set the output to the value returned by the confirm method
+				result.then((value) => {
+					document.getElementById('output').innerHTML = `The value returned by the confirm method is : ${value}`;
+				});
+			});
+
+			// add the event listeners to the custom prompt button
+			document.getElementById('customPrompt').addEventListener('click', function () {
+				var result = customPromptFunc('This is a custom prompt');
+				// wait for the promise to resolve and set the output to the value returned by the prompt method
+				result.then((value) => {
+					if (value == null) {
+						document.getElementById('output').innerHTML = 'User did\'t enter a anything';
+					} else {
+						document.getElementById('output').innerHTML = DOMPurify.sanitize(`${value}`);
+					}
+				});
+			});
+		}
+	</script>
+</body>
+
+</html>
