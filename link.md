@@ -1,5 +1,4 @@
-main site : https://tiny-dodol-ac6873.netlify.app/
-native dialogs : https://tiny-dodol-ac6873.netlify.app/nativedialogs.html
-custom dialogs : https://tiny-dodol-ac6873.netlify.app/customdialogs.html
-crud : https://tiny-dodol-ac6873.netlify.app/crud.html
-styled-crud: https://tiny-dodol-ac6873.netlify.app/styledcrud.html
+main site : https://frabjous-nougat-b383d8.netlify.app
+method test : https://frabjous-nougat-b383d8.netlify.app/methodtest.html
+custom element : https://frabjous-nougat-b383d8.netlify.app/webcomponent.html
+extra credit react: https://frabjous-nougat-b383d8.netlify.app/extracredit.html

@@ -48,14 +48,15 @@
 			<br>
 			<textarea name="article_body" id="article_body" required></textarea>
 			<br>
-			<input type="date" name="article_date" id="article_date" hidden>
+			<input type="date" name="article_date" id="article_date" hidden contenteditable="false">
 			<button type="submit" id="postBtn" formaction="https://httpbin.org/post">Post</button>
 			<button type="submit" id="getBtn" formaction="https://httpbin.org/get">Get</button>
 			<button type="submit" id="putBtn" formaction="https://httpbin.org/put">Put</button>
 			<button type="submit" id="deleteBtn" formaction="https://httpbin.org/delete">Delete</button>
 			<br>
-			<output form="methodtest" id="response"></output>
+			<output form="methodtest" id="response" type="module"></output>
 		</form>
+		<a class="pagelink" href="webcomponent.html">PART 2</a>
 	</main>
 	<footer>
 		<p>Site developed for CSE 134B</p>
