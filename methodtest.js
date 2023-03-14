@@ -68,11 +68,23 @@ function init() {
 function convertResponseToHTML(response) {
 	let html = "<table>";
 
+	if (response.args) {
+		html += `<tr><th colspan='2'>Args</th></tr>`;
+
+		if (Object.keys(response.args).length == 0) {
+			html += `<tr><td colspan='2'>No args</td></tr>`;
+		} else {
+			for (let key in response.args) {
+				html += `<tr><td>${htmlEntities(key)}</td><td><pre>${htmlEntities(response.args[key])}</pre></td></tr>`;
+			}
+		}
+	}
+
 	if (response.form) {
 		html += `<tr><th colspan='2'>Form Data</th></tr>`;
 		for (let key in response.form) {
 			html += '<tr>'
-			html += `<td>${htmlEntities(key)}</td><td>${htmlEntities(response.form[key])}</td>`;
+			html += `<td>${htmlEntities(key)}</td><td><pre>${htmlEntities(response.form[key])}</pre></td>`;
 			html += '</tr>';
 		}
 	}
@@ -86,14 +98,20 @@ function convertResponseToHTML(response) {
 		}
 	}
 
+
+	if (response.origin) {
+		html += `<tr><th colspan='2'>Origin</th></tr>`;
+		html += `<tr><td colspan='2'>${htmlEntities(response.origin)}</td></tr>`;
+	}
+
 	if (response.url) {
 		html += `<tr><th colspan='2'>URL</th><tr>`;
-		html += `<tr><th colspan='2'>${htmlEntities(response.url)}</th></tr>`;
+		html += `<tr><td colspan='2'>${htmlEntities(response.url)}</td></tr>`;
 	}
 
 	html += `</table>`;
 
-	console.log(html);
+	// console.log(html);
 	return html;
 }
 
